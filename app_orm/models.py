@@ -8,6 +8,7 @@ class Persona(models.Model):
     rut=models.CharField(max_length=10, primary_key=True, null=False)
     nombre=models.CharField(max_length=50, null=False)
     apellido=models.CharField(max_length=50, null=False)
+    foto=models.ImageField(upload_to='personas',null=True)
     f_nacto=models.DateField()
     sexo=models.CharField(max_length=1, default='O', choices=TIPO_SEXO)
     pais=models.CharField(max_length=20, choices=LISTA_PAISES, default='CL')

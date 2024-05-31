@@ -2,9 +2,9 @@ from django.contrib import admin
 from .models import Persona, Mascota
 
 class AdmPersona(admin.ModelAdmin):
-    list_display=['rut','nombre','apellido','f_nacto','sexo','pais']
+    list_display=['rut','nombre','apellido','foto','f_nacto','sexo','pais']
     list_filter=['apellido','f_nacto','sexo']
-    list_editable=['nombre','apellido','f_nacto', 'sexo','pais']
+    #list_editable=['nombre','apellido','f_nacto', 'sexo','pais']
 
 
 class AdmMascota(admin.ModelAdmin):
