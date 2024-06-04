@@ -9,5 +9,16 @@
     <h1>CRUD con Django</h1>
     <p>Es la cumbia...</p>
   </div>
-  
+  <div class="container mt-3">
+    <p>Fecha: {{fecha}}</p>
+    <h2>{{texto}}</h2>
+    <p>Número de asistentes: {{asistentes}}</p>
+    
+    <ul>
+
+      {% for num in lista %}
+        <li>{{num}}</li>
+      {% endfor %}
+    </ul>
+  </div>
 {% endblock contenido %}
