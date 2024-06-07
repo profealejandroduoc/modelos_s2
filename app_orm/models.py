@@ -10,8 +10,8 @@ class Persona(models.Model):
     apellido=models.CharField(max_length=50, null=False)
     foto=models.ImageField("Imagen",upload_to='personas',null=True)
     f_nacto=models.DateField("Fecha de Nacimiento")
-    sexo=models.CharField(max_length=1, default='O', choices=TIPO_SEXO)
-    pais=models.CharField(max_length=20, choices=LISTA_PAISES, default='CL')
+    sexo=models.CharField(max_length=10, default='Otro', choices=TIPO_SEXO)
+    pais=models.CharField(max_length=50, choices=LISTA_PAISES, default='CL')
 
     def __str__(self):
         return f"RUT: {self.rut} NOMBRE: {self.nombre} {self.apellido}"

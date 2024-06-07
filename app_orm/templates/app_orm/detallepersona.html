@@ -10,12 +10,13 @@
         <div class="col-lg-4">
 
             <div class="card mt-2 shadow rounded">
-               <div class="p-5">
-                <img src="{{persona.foto.url}}" class="card-img-top" alt="imagen" width="50">
-               </div>
+               
                 <div class="card-body">
                   <h2 class="card-title text-center">{{persona.nombre}} {{persona.apellido}}</h2>
-                    <h4>Rut: {{persona.rut}}</h4>
+                  <div class="p-5">
+                    <img src="{{persona.foto.url}}" class="card-img-top" alt="imagen" width="50">
+                   </div>
+                    <h6>Rut: {{persona.rut}}</h6>
                     <p>Fecha de Nacimiento: {{persona.f_nacto}}</p>
                     <p>Sexo: {{persona.sexo}}</p>
                     <p>Pais: {{persona.pais}}</p>
