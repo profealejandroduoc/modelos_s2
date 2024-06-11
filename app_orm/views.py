@@ -2,7 +2,7 @@ from django.shortcuts import render
 from datetime import datetime, date
 from .models import Persona
 from django.shortcuts import get_object_or_404,redirect
-from .forms import PersonaForm
+from .forms import PersonaForm, UpdPersonaForm
 # Create your views here.
 def index(request):
     hoy=datetime.now()
@@ -33,8 +33,6 @@ def personas(request):
 def crearpersona(request):
     miformulario=PersonaForm()
 
-
-
     if request.method=="POST":
         miformulario=PersonaForm(data=request.POST,files=request.FILES)
         if miformulario.is_valid():
@@ -45,8 +43,6 @@ def crearpersona(request):
     datos={
         "form":miformulario
     }
-
-
 
     return render(request,'app_orm/crearpersona.html',datos)
 
@@ -60,3 +56,34 @@ def detallepersona(request,id):
     }
 
     return render(request,'app_orm/detallepersona.html', datos)
+
+def modificar(request,id):
+    persona=get_object_or_404(Persona,rut=id)
+    form=UpdPersonaForm(instance=persona)
+   
+    datos={
+        "form":form,
+        "persona":persona
+  
+    }
+
+    if request.method=="POST":
+        form=UpdPersonaForm(data=request.POST,files=request.FILES, instance=persona)
+        if form.is_valid():
+
+            form.save()
+            return redirect(to='personas')
+
+    return render(request,'app_orm/modificar.html', datos)
+
+
+def eliminar(request,id):
+    persona=get_object_or_404(Persona,rut=id)
+    datos={
+        "persona":persona
+    }
+
+    if request.method=="POST":
+        persona.delete()
+        return redirect(to="personas")
+    return render(request,'app_orm/eliminar.html', datos)

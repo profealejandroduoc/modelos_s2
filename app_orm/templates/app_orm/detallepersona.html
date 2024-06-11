@@ -10,28 +10,37 @@
         <div class="col-lg-4">
 
             <div class="card mt-2 shadow rounded">
-               
+
                 <div class="card-body">
-                  <h2 class="card-title text-center">{{persona.nombre}} {{persona.apellido}}</h2>
-                  <div class="p-5">
-                    <img src="{{persona.foto.url}}" class="card-img-top" alt="imagen" width="50">
-                   </div>
-                    <h6>Rut: {{persona.rut}}</h6>
-                    <p>Fecha de Nacimiento: {{persona.f_nacto}}</p>
-                    <p>Sexo: {{persona.sexo}}</p>
-                    <p>Pais: {{persona.pais}}</p>
+                    <h2 class="card-title text-center">{{persona.nombre}} {{persona.apellido}}</h2>
+                    <div class="p-3">
+                        <img src="{{persona.foto.url}}" class="card-img-top" alt="imagen" width="50">
+                    </div>
+
+                    <div class="px-3">
+                        <h5>Rut: </h5>
+                        <p>{{persona.rut}}</p>
+                        <h5>Fecha de Nacimiento: </h5>
+                        <p>{{persona.f_nacto}}</p>
+                        <h5>Sexo: </h5>
+                        <p>{{persona.sexo}}</p>
+                        <h5>Pais: </h5>
+                        <p>{{persona.pais}}</p>
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        <a href="{% url "modificar" persona.rut %}" role="button" class="btn btn-warning text-light ">Modificar</a>&nbsp;
+                        <a href="{% url "eliminar" persona.rut %}" role="button" class="btn btn-danger text-light ">Eliminar</a>&nbsp;
+                        <a href="{% url "personas" %}" role="button" class="btn btn-info text-light text-center">&nbsp;&nbsp;Volver&nbsp; &nbsp;</a>
+                        
+                    </div>
                 </div>
-              </div>
+            </div>
         </div>
         <div class="col-lg-4"></div>
     </div>
-    
+
 
 </div>
 
 
 {% endblock contenido %}
-
-
-
-

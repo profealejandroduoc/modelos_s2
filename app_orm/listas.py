@@ -20,9 +20,9 @@ SUBTIPO_MASCOTA = {
 }
 
 TIPO_SEXO={
-    ("Femenino","F"),
-    ("Masculino","M"),
-    ("Otro","O")
+    ("Femenino","Femenino"),
+    ("Masculino","Masculino"),
+    ("Otro","Otro")
 }
 
 LISTA_PAISES = [

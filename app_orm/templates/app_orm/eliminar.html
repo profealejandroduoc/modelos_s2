@@ -1,0 +1,75 @@
+{% extends "app_orm/base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block contenido %}
+
+<div class="container">
+    <div class="row mt-4">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8 border rounded p-4 shadow">
+            <h4 class="text-center pb-2 mt-2">Eliminar Persona</h4>
+            <div class="p-3">
+                <div class="alert alert-danger" role="alert">
+                    <strong><h1>Esta a punto de eliminar un registro</h1></strong>
+                   <h4>{{persona.nombre}} {{persona.apellido}}</h4> 
+                </div>
+
+
+
+            </div>
+
+                <div class="d-flex justify-content-end">
+                    <button type="button" class="btn btn-danger text-light" data-bs-toggle="modal" data-bs-target="#myModal">
+                        Eliminar Registro
+                      </button>
+                    &nbsp;
+                    <a href="{% url 'personas' %}" role="button"
+                        class="btn btn-info text-light text-center">&nbsp;&nbsp;Volver&nbsp; &nbsp;</a>
+
+                </div>
+
+
+
+
+
+        </div>
+        <div class="col-sm-2"></div>
+    </div>
+
+
+</div>
+<!-- Button to Open the Modal -->
+
+  
+  <!-- The Modal -->
+  <div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Precaución</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body">
+         ¿Está seguro/a de que desea eliminar a {{persona.nombre}} {{persona.apellido}}
+        </div>
+  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          
+            <form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+          <input type="submit" value="Confirmar Registro" class='btn btn-danger text-light'>
+        </form>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+
+{% endblock contenido %}
