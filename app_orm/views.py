@@ -6,11 +6,14 @@ from .forms import PersonaForm, UpdPersonaForm
 from os import remove, path
 from django.conf import settings
 from django.contrib import messages
+from django.contrib.auth import logout
 # Create your views here.
 
-def login(request):
-    return render(request, 'app_orm/login.html')
 
+def salir(request):
+    logout(request)
+    messages.info(request,'Sesión Cerrada')
+    return redirect(to="index")
 
 def index(request):
     hoy=datetime.now()
