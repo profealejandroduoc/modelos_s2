@@ -3,7 +3,15 @@ from datetime import datetime, date
 from .models import Persona
 from django.shortcuts import get_object_or_404,redirect
 from .forms import PersonaForm, UpdPersonaForm
+from os import remove, path
+from django.conf import settings
+from django.contrib import messages
 # Create your views here.
+
+def login(request):
+    return render(request, 'app_orm/login.html')
+
+
 def index(request):
     hoy=datetime.now()
     texto="Este es un texto desde la vista index"
@@ -36,8 +44,10 @@ def crearpersona(request):
     if request.method=="POST":
         miformulario=PersonaForm(data=request.POST,files=request.FILES)
         if miformulario.is_valid():
-
             miformulario.save()
+            #from django.contrib import messages
+            messages.success(request, "Persona agregada con éxito")
+            
             return redirect(to='personas')
 
     datos={
@@ -72,6 +82,8 @@ def modificar(request,id):
         if form.is_valid():
 
             form.save()
+            
+            messages.warning(request,'Persona modificada')
             return redirect(to='personas')
 
     return render(request,'app_orm/modificar.html', datos)
@@ -84,6 +96,9 @@ def eliminar(request,id):
     }
 
     if request.method=="POST":
-        persona.delete()
+        #from os import remove, path
+        #from django.conf import settings
+        remove(path.join(str(settings.MEDIA_ROOT).replace('/media','')+str(persona.foto.url).replace('/','\\')))
+        persona.delete()       
         return redirect(to="personas")
     return render(request,'app_orm/eliminar.html', datos)
