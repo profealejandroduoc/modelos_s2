@@ -7,9 +7,9 @@
 
 <div class="container">
     <div class="row mt-4">
-        <div class="col-sm-4"></div>
-        <div class="col-sm-4 border rounded p-4 shadow">
-            <h2 class="text-center pb-2 mt-2">Inicio de Sesión</h2>
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6 border rounded p-4 shadow">
+            <h3 class="text-center pb-2 mt-2">Crear cuenta de usuario</h3>
             
             <form action="" method="post">
                 {% csrf_token %}
@@ -18,17 +18,14 @@
              
                 
                 <div class="d-flex justify-content-end">
-                    <input type="submit" value="Login" class='btn btn-primary text-light btn-lg'>
+                    <input type="submit" value="Registrarse" class='btn btn-success text-light btn-lg'>
                 </div>
 
             </form>
 
-            <div class="text-center pb-3">
-                <a href="{% url "crearcuenta" %}" class="text-primary nav-link"><strong>Crear cuenta</strong></a>
-            </div>
-
+          
         </div>
-        <div class="col-sm-4"></div>
+        <div class="col-sm-3"></div>
     </div>
     
 

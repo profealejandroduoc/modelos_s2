@@ -2,13 +2,29 @@ from django.shortcuts import render
 from datetime import datetime, date
 from .models import Persona
 from django.shortcuts import get_object_or_404,redirect
-from .forms import PersonaForm, UpdPersonaForm
+from .forms import PersonaForm, UpdPersonaForm, UserForm
 from os import remove, path
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import logout
 # Create your views here.
 
+
+def crearcuenta(request):
+    form=UserForm()
+
+    datos={
+        'form':form
+    }
+
+    if request.method=="POST":
+        form=UserForm(data=request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request,"Nuevo usuario registrado")
+            return redirect(to="login")
+        
+    return render(request,'registration/crearcuenta.html', datos)
 
 def salir(request):
     logout(request)

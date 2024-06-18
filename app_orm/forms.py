@@ -1,5 +1,11 @@
 from django import forms
 from .models import Persona
+from django.contrib.auth.forms import UserCreationForm
+
+
+
+class UserForm(UserCreationForm):
+    pass
 
 
 class PersonaForm(forms.ModelForm):
