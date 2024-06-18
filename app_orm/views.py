@@ -7,6 +7,7 @@ from os import remove, path
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import logout
+from django.contrib.auth.decorators import login_required, permission_required
 # Create your views here.
 
 
@@ -56,7 +57,8 @@ def personas(request):
 
     return render(request,'app_orm/personas.html',datos)
 
-
+@login_required
+@permission_required('app_orm.add_persona') 
 def crearpersona(request):
     miformulario=PersonaForm()
 
@@ -86,6 +88,8 @@ def detallepersona(request,id):
 
     return render(request,'app_orm/detallepersona.html', datos)
 
+@login_required
+@permission_required('app_orm.change_persona') 
 def modificar(request,id):
     persona=get_object_or_404(Persona,rut=id)
     form=UpdPersonaForm(instance=persona)
@@ -107,7 +111,8 @@ def modificar(request,id):
 
     return render(request,'app_orm/modificar.html', datos)
 
-
+@login_required
+@permission_required('app_orm.delete_persona') 
 def eliminar(request,id):
     persona=get_object_or_404(Persona,rut=id)
     datos={
