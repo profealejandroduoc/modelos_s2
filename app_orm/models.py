@@ -1,14 +1,18 @@
 from django.db import models
 from .listas import LISTA_PAISES,TIPO_SEXO, TIPO_MASCOTA, SUBTIPO_MASCOTA
 from django.core.validators import MaxValueValidator, MinValueValidator
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser, User
 
 
 class User(AbstractUser):
     direccion=models.CharField('Dirección',max_length=500,null=True)
     telefono=models.CharField('Teléfono',max_length=9, null=True)
 
-
+#OPCION MAS FACIL
+#class Perfil(models.Model):
+#  usuario=models.OneToOneField(User, related_name="usuario", on_delete=models.CASCADE)
+#  direccion=models.CharField('Dirección',max_length=500,null=True)
+#  telefono=models.CharField('Teléfono',max_length=9, null=True)
 
 # Create your models here.
 class Persona(models.Model):

@@ -50,9 +50,13 @@ def index(request):
 
 def personas(request):
     personas=Persona.objects.all()
-
+    usuario=request.user
+    print("PERMISOS********",usuario.get_all_permissions())
+    agregar=usuario.has_perm('app_orm.add_persona')
+    print(agregar)
     datos={
-        "personas":personas
+        "personas":personas,
+        "agregar":agregar
     }
 
     return render(request,'app_orm/personas.html',datos)

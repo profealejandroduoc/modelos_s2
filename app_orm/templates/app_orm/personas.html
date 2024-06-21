@@ -6,7 +6,7 @@
 {% block contenido %}
 <div class="container mt-4">
     <h3>Lista de Personas</h3>
-    {% if perms.add_persona %}
+    {% if agregar == True %}
     <p><a href="{% url "crearpersona" %}"> + Agregar Persona</a></p>
     {% endif %}
     <div class="mt-3">

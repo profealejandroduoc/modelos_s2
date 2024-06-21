@@ -28,8 +28,14 @@
                         <p>{{persona.pais}}</p>
                     </div>
                     <div class="d-flex justify-content-end">
+
+                        {% if perms.app_orm.delete_persona %}
+
                         <a href="{% url "modificar" persona.rut %}" role="button" class="btn btn-warning text-light ">Modificar</a>&nbsp;
                         <a href="{% url "eliminar" persona.rut %}" role="button" class="btn btn-danger text-light ">Eliminar</a>&nbsp;
+                        
+                        {% endif %}
+                        
                         <a href="{% url "personas" %}" role="button" class="btn btn-info text-light text-center">&nbsp;&nbsp;Volver&nbsp; &nbsp;</a>
                         
                     </div>

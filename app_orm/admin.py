@@ -15,7 +15,12 @@ class AdmMascota(admin.ModelAdmin):
     list_editable=['nombre', 'tipo','edad', 'subtipo', 'propietario']
     list_filter=['propietario']
 
+
+class AdmUser(admin.ModelAdmin):
+    filter_horizontal = ('groups','user_permissions') 
+
+
 # Register your models here.
 admin.site.register(Persona, AdmPersona)
 admin.site.register(Mascota, AdmMascota)
-admin.site.register(User)
+admin.site.register(User, AdmUser)
