@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from datetime import datetime, date
-from .models import Persona
+from .models import Persona, User
 from django.shortcuts import get_object_or_404,redirect
 from .forms import PersonaForm, UpdPersonaForm, UserForm
 from os import remove, path
@@ -8,6 +8,7 @@ from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required, permission_required
+from django.contrib.auth.models import Permission
 # Create your views here.
 
 
@@ -22,6 +23,12 @@ def crearcuenta(request):
         form=UserForm(data=request.POST)
         if form.is_valid():
             form.save()
+            usr=form.cleaned_data["username"]
+            
+            usuario = User.objects.get(username=usr)
+            permiso = Permission.objects.get(codename='add_persona') #import Permission 
+            usuario.user_permissions.add(permiso)
+
             messages.success(request,"Nuevo usuario registrado")
             return redirect(to="login")
         
